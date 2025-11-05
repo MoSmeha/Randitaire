@@ -2,24 +2,33 @@ const body = document.querySelector("body");
 const navbar = document.querySelector(".navbar");
 const menuBtn = document.querySelector(".menu-btn");
 const cancelBtn = document.querySelector(".cancel-btn");
-menuBtn.onclick = ()=>{
+const logo = document.querySelector(".logo");
+const icon = document.querySelector(".fa-bars");
+
+menuBtn.onclick = () => {
   navbar.classList.add("show");
   menuBtn.classList.add("hide");
   body.classList.add("disabled");
-}
-cancelBtn.onclick = ()=>{
+};
+cancelBtn.onclick = () => {
   body.classList.remove("disabled");
   navbar.classList.remove("show");
   menuBtn.classList.remove("hide");
-}
-window.onscroll = ()=>{
-  this.scrollY > 20 ? navbar.classList.add("sticky") : navbar.classList.remove("sticky");
-}
+};
+window.onscroll = () => {
+  this.scrollY > 20
+    ? navbar.classList.add("sticky")
+    : navbar.classList.remove("sticky");
+  this.scrollY > 20
+    ? logo.classList.add("sticky-black")
+    : logo.classList.remove("sticky-black");
+  this.scrollY > 20
+    ? icon.classList.add("sticky-black")
+    : icon.classList.remove("sticky-black");
+};
 
-
-
-document.addEventListener('DOMContentLoaded', function(){
-  var app = document.getElementById('typewriter');
+document.addEventListener("DOMContentLoaded", function () {
+  var app = document.getElementById("typewriter");
 
   var typewriter = new Typewriter(app, {
     loop: true,
@@ -28,24 +37,22 @@ document.addEventListener('DOMContentLoaded', function(){
 
   typewriter
     .pauseFor(750)
-    .typeString('Every')
+    .typeString("Every")
     .pauseFor(750)
     .deleteChars(5)
-    .typeString('Thing')
+    .typeString("Thing")
     .pauseFor(750)
     .deleteChars(5)
-    .typeString('You')
+    .typeString("You")
     .pauseFor(750)
     .deleteChars(3)
-    .typeString('Desire')
+    .typeString("Desire")
     .pauseFor(750)
     .deleteChars(6)
-    .typeString('& More')
+    .typeString("& More")
     .pauseFor(750)
     .start();
 });
-
-
 
 const items = [
   {
@@ -54,7 +61,7 @@ const items = [
     price: "14.99",
     color: "Red",
     description: "A vibrant Red Hat to top off your look.",
-    image: "./images/RedHat.png"
+    image: "./images/RedHat.png",
   },
   {
     category: "Shoes",
@@ -62,7 +69,7 @@ const items = [
     price: "89.99",
     color: "White",
     description: "Classic white Timberland boots for a stylish look.",
-    image: "./images/WhiteTimbs.png"
+    image: "./images/WhiteTimbs.png",
   },
   {
     category: "Head",
@@ -70,7 +77,7 @@ const items = [
     price: "29.99",
     color: "Multicolored",
     description: "Authentic Mexican sombrero for a festive vibe.",
-    image: "./images/MexicanHat.png"
+    image: "./images/MexicanHat.png",
   },
   {
     category: "Torso",
@@ -78,7 +85,7 @@ const items = [
     price: "24.99",
     color: "Blue",
     description: "Casual blue shirt for everyday wear.",
-    image: "./images/BlueShirt.png"
+    image: "./images/BlueShirt.png",
   },
   {
     category: "Torso",
@@ -86,7 +93,7 @@ const items = [
     price: "39.99",
     color: "Red",
     description: "A stylish Red Sweater to keep you warm.",
-    image: "./images/RedSweater.png"
+    image: "./images/RedSweater.png",
   },
   {
     category: "Head",
@@ -94,7 +101,7 @@ const items = [
     price: "19.99",
     color: "Blue",
     description: "A classic Blue Scarf to complete your look.",
-    image: "./images/BlueScarf.png"
+    image: "./images/BlueScarf.png",
   },
   {
     category: "Legs",
@@ -102,7 +109,7 @@ const items = [
     price: "39.99",
     color: "Blue",
     description: "Comfortable blue shorts for everyday wear.",
-    image: "./images/BlueShorts.png"
+    image: "./images/BlueShorts.png",
   },
   {
     category: "Shoes",
@@ -110,7 +117,7 @@ const items = [
     price: "19.99",
     color: "Brown",
     description: "Classic Brown Shoes for going all out.",
-    image: "./images/BrownShoes.png"
+    image: "./images/BrownShoes.png",
   },
   {
     category: "Shoes",
@@ -118,7 +125,7 @@ const items = [
     price: "29.99",
     color: "Black",
     description: "Sleek Black Shoes for a sophisticated look.",
-    image: "./images/BlackConverse.png"
+    image: "./images/BlackConverse.png",
   },
   {
     category: "Torso",
@@ -126,7 +133,7 @@ const items = [
     price: "49.99",
     color: "Grey",
     description: "A comfortable Grey Hoodie for chilly days.",
-    image: "./images/GreyHoodie.png"
+    image: "./images/GreyHoodie.png",
   },
   {
     category: "Legs",
@@ -134,16 +141,16 @@ const items = [
     price: "34.99",
     color: "Grey",
     description: "Stylish Grey Pants for any occasion.",
-    image: "./images/GreyPants.png"
+    image: "./images/GreyPants.png",
   },
-  
+
   {
     category: "Torso",
     name: "Black T-shirt",
     price: "14.99",
     color: "Black",
     description: "Basic black t-shirt for versatile styling.",
-    image: "./images/BlackTshirt.png"
+    image: "./images/BlackTshirt.png",
   },
   {
     category: "Legs",
@@ -151,7 +158,7 @@ const items = [
     price: "49.99",
     color: "Various",
     description: "Elegant trousers suitable for formal occasions.",
-    image: "./images/ClassyPants.png"
+    image: "./images/ClassyPants.png",
   },
   {
     category: "Legs",
@@ -159,7 +166,7 @@ const items = [
     price: "34.99",
     color: "Green",
     description: "Durable military-style shorts for outdoor activities.",
-    image: "./images/MilitaryShorts.png"
+    image: "./images/MilitaryShorts.png",
   },
   {
     category: "Shoes",
@@ -167,7 +174,7 @@ const items = [
     price: "59.99",
     color: "Blue",
     description: "Stylish blue shoes for casual outings.",
-    image: "./images/BlueShoes.png"
+    image: "./images/BlueShoes.png",
   },
   {
     category: "Head",
@@ -175,7 +182,7 @@ const items = [
     price: "19.99",
     color: "Blue",
     description: "Classic blue hat to complement your look.",
-    image: "./images/BlueHat.png"
+    image: "./images/BlueHat.png",
   },
   {
     category: "Legs",
@@ -183,7 +190,7 @@ const items = [
     price: "39.99",
     color: "Brown",
     description: "Stylish brown pants suitable for various occasions.",
-    image: "./images/BrownPants.png"
+    image: "./images/BrownPants.png",
   },
   {
     category: "Head",
@@ -191,7 +198,7 @@ const items = [
     price: "19.99",
     color: "Brown",
     description: "Classic brown hat to add a touch of sophistication.",
-    image: "./images/BrownHat.png"
+    image: "./images/BrownHat.png",
   },
   {
     category: "Shoes",
@@ -199,7 +206,7 @@ const items = [
     price: "49.99",
     color: "Yellow",
     description: "Vibrant yellow shoes to make a statement.",
-    image: "./images/YellowShoes.png"
+    image: "./images/YellowShoes.png",
   },
   {
     category: "Torso",
@@ -207,26 +214,29 @@ const items = [
     price: "34.99",
     color: "Pink",
     description: "Cozy pink hoodie for a stylish and comfortable look.",
-    image: "./images/PinkHoodie.png"
-  }
-
+    image: "./images/PinkHoodie.png",
+  },
 ];
 let selectedItemIndex = null;
-
 
 function displayCards() {
   const cardsContainer = document.getElementById("cardsContainer");
   const catFilter = document.getElementById("catFilter").value;
-  const searchInput = document.getElementById("searchInput").value.toLowerCase().trim();
+  const searchInput = document
+    .getElementById("searchInput")
+    .value.toLowerCase()
+    .trim();
 
   cardsContainer.innerHTML = "";
-  
+
   items.forEach((item, index) => {
-    if ((catFilter === "all" || item.category === catFilter) &&
-        (searchInput === '' ||
-        item.name.toLowerCase().includes(searchInput) ||    //be7al ken small 
-        item.description.toLowerCase().includes(searchInput))) {
-          const productCard = `
+    if (
+      (catFilter === "all" || item.category === catFilter) &&
+      (searchInput === "" ||
+        item.name.toLowerCase().includes(searchInput) || //be7al ken small
+        item.description.toLowerCase().includes(searchInput))
+    ) {
+      const productCard = `
           <div class="card">
             <div class="imgBox">
               <img src="${item.image}" alt="${item.name}" class="Cloth">
@@ -253,11 +263,11 @@ function displayCards() {
 }
 
 function deleteListener() {
-  const deleteButtons = document.querySelectorAll('.delete');
-  deleteButtons.forEach(button => {
-    button.addEventListener('click', function () {
+  const deleteButtons = document.querySelectorAll(".delete");
+  deleteButtons.forEach((button) => {
+    button.addEventListener("click", function () {
       const index = parseInt(this.dataset.index); //mne5od l index taba3a w mna3melo splice
-      if (confirm('Are you sure you want to delete this item?')) {
+      if (confirm("Are you sure you want to delete this item?")) {
         items.splice(index, 1);
         displayCards();
       }
@@ -266,32 +276,30 @@ function deleteListener() {
 }
 
 function updateListener() {
-  const updateButtons = document.querySelectorAll('.update');
-  updateButtons.forEach(button => {
-    button.addEventListener('click', function () {
+  const updateButtons = document.querySelectorAll(".update");
+  updateButtons.forEach((button) => {
+    button.addEventListener("click", function () {
       const index = parseInt(this.dataset.index);
       selectedItemIndex = index;
       const selectedItem = items[index];
       fillForm(selectedItem);
-      
+
       // smooth scroll
-      const formSection = document.getElementById('Add'); //esm l section
-      formSection.scrollIntoView({ behavior: 'smooth' });
+      const formSection = document.getElementById("Add"); //esm l section
+      formSection.scrollIntoView({ behavior: "smooth" });
     });
   });
 }
 
-document.querySelectorAll('.menu-list a').forEach(anchor => {
-  anchor.addEventListener('click', function (e) {
+document.querySelectorAll(".menu-list a").forEach((anchor) => {
+  anchor.addEventListener("click", function (e) {
     e.preventDefault();
-    const target = document.querySelector(this.getAttribute('href'));
+    const target = document.querySelector(this.getAttribute("href"));
     if (target) {
-      window.scrollTo({ top: target.offsetTop,
-         behavior: 'smooth' });
+      window.scrollTo({ top: target.offsetTop, behavior: "smooth" });
     }
   });
-})
-
+});
 
 function fillForm(selectedItem) {
   document.getElementById("cat").value = selectedItem.category;
@@ -320,10 +328,9 @@ function submittingForm(event) {
       resetForm();
     }
     displayCards();
-    document.getElementById("addItemForm").reset(); 
+    document.getElementById("addItemForm").reset();
   }
 }
-
 
 function getFormData() {
   const category = document.getElementById("cat").value;
@@ -333,7 +340,8 @@ function getFormData() {
   const description = document.getElementById("desc").value;
   const image = document.getElementById("Img").value;
 
-  if (!validateForm(category, name, price, color, description, image)) return null;
+  if (!validateForm(category, name, price, color, description, image))
+    return null;
 
   return { category, name, price, color, description, image };
 }
@@ -358,30 +366,33 @@ function resetForm() {
   selectedItemIndex = null;
 }
 
-document.addEventListener("DOMContentLoaded", function() {
-  
+document.addEventListener("DOMContentLoaded", function () {
   displayCards();
 
-  document.getElementById("addItemForm").addEventListener("submit", submittingForm);
+  document
+    .getElementById("addItemForm")
+    .addEventListener("submit", submittingForm);
   document.getElementById("updateItemBtn").addEventListener("click", () => {
-    document.getElementById("addItemForm").dispatchEvent(new Event('submit'));
+    document.getElementById("addItemForm").dispatchEvent(new Event("submit"));
   });
 
   document.getElementById("catFilter").addEventListener("change", displayCards);
-  document.getElementById("searchInput").addEventListener("input", displayCards);
+  document
+    .getElementById("searchInput")
+    .addEventListener("input", displayCards);
 
- 
-
-  document.getElementById('contactForm').addEventListener('submit', function(event) {
-    event.preventDefault();
-    const name = document.getElementById('nameInput').value.trim();
-    const email = document.getElementById('emailInput').value.trim();
-    const message = document.getElementById('messageInput').value.trim();
-    if (!name || !email || !message) {
-      alert('Please fill in all fields.');
-      return;
-    }
-    const feedback = `<div id="feedback">
+  document
+    .getElementById("contactForm")
+    .addEventListener("submit", function (event) {
+      event.preventDefault();
+      const name = document.getElementById("nameInput").value.trim();
+      const email = document.getElementById("emailInput").value.trim();
+      const message = document.getElementById("messageInput").value.trim();
+      if (!name || !email || !message) {
+        alert("Please fill in all fields.");
+        return;
+      }
+      const feedback = `<div id="feedback">
                         <h2>${name}'s feedback</h2>
                         <p><strong>Name:</strong> ${name}</p>
                         <p><strong>Email:</strong> ${email}</p>
@@ -389,10 +400,7 @@ document.addEventListener("DOMContentLoaded", function() {
                         
                         
                         </div>`;
-    document.getElementById('output').innerHTML += feedback;
-    document.getElementById('contactForm').reset();
-  });
-
- 
+      document.getElementById("output").innerHTML += feedback;
+      document.getElementById("contactForm").reset();
+    });
 });
-
