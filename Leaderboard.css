@@ -1,0 +1,210 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  font-size: 15px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 500;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+::selection {
+  background: rgb(0, 123, 255, 0.3);
+}
+#Leaderboard-page {
+  height: 100vh;
+  width: 100%;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("./images/Test.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.content {
+  max-width: 1250px;
+  margin: auto;
+  padding: 0 30px;
+}
+.hover-underline {
+  display: inline-block;
+  position: relative;
+  color: #f75959;
+}
+
+.hover-underline::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #f75959;
+  transform-origin: bottom right;
+  transition: transform 0.4s ease-out;
+}
+
+.hover-underline:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+.navbar {
+  position: fixed;
+  width: 100%;
+  z-index: 999;
+  padding: 1.5em 0;
+  transition: all 0.3s ease;
+}
+
+.navbar.sticky {
+  height: 6vh;
+  background: #ffffff;
+  padding: 1em 0;
+  box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.1);
+}
+.navbar.sticky li a {
+  color: #222;
+}
+.navbar .content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.navbar .logo {
+  color: #ffffff;
+  font-size: 30px;
+  font-weight: 600;
+  text-decoration: none;
+  font-family: "Lobster Two", sans-serif;
+}
+
+.navbar .menu-list {
+  display: inline-flex;
+}
+
+.menu-list li {
+  list-style: none;
+}
+
+.menu-list li a {
+  color: #fff;
+  font-size: 18px;
+  font-weight: 500;
+  margin-left: 25px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+.icon {
+  color: #ffffff;
+  font-size: 20px;
+  cursor: pointer;
+  display: none;
+}
+.sticky-black {
+  color: #000000 !important;
+}
+
+.menu-list .cancel-btn {
+  position: absolute;
+  right: 30px;
+  top: 20px;
+}
+/* end of navbar  */
+
+/* start of leaderboard table */
+
+.table-container {
+  width: 90%;
+  max-width: 80em;
+  border: 0.1em solid #abdcbf;
+  border-radius: 0.5em;
+  overflow: scroll;
+  max-height: 40em;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 1em;
+}
+
+thead {
+  background-color: #ff6363;
+  position: sticky;
+  top: 0;
+}
+
+th,
+td {
+  padding: 1em;
+  border-bottom: 0.1em solid #ddd;
+  color: white;
+}
+
+.add-name-form {
+  width: 90%;
+  max-width: 80em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1em;
+  margin: 2em 0;
+  flex-wrap: wrap;
+}
+
+.add-name-form input,
+.add-name-form button {
+  padding: 0.8em;
+  font-size: 1em;
+}
+
+.add-name-form input {
+  width: 40%;
+}
+
+.add-name-form button {
+  cursor: pointer;
+  background-color: #ff7373;
+  color: white;
+  border: none;
+  border-radius: 0.3em;
+}
+
+.add-name-form button:hover {
+  background-color: #ff5a5a;
+}
+
+@media (max-width: 780px) {
+  th,
+  td {
+    padding: 0.8em;
+    font-size: 0.9em;
+  }
+}
