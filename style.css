@@ -165,21 +165,22 @@ h2 {
 
 #second-section {
   height: 94vh;
-  background-color: #eee;
+  background-color: #b5b5b5;
 }
 
 .top-three {
   width: 100%;
-  height: 79vh;
+  height: 80vh;
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 #left-side,
 #right-side {
   height: 100%;
-  width: 50%;
+  min-width: 50%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -188,11 +189,43 @@ h2 {
 #right-side {
   justify-content: space-around;
 }
+
+#cup {
+  width: 20em;
+}
+
+/* Leaderboard table */
+.leaderboard {
+  height: 80%;
+  width: 100%;
+  border-collapse: collapse;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 1em;
+  overflow: hidden;
+}
+
+.leaderboard th,
+.leaderboard td {
+  text-align: left;
+  padding: 0.8em 1.2em;
+  color: black;
+}
+
+.leaderboard th {
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 0.9em;
+}
+
+.leaderboard tr {
+  transition: background-color 0.3s ease;
+}
+
 /* footer */
 .footer {
-  height: 15vh;
-  background-color: #195728;
-  color: #fff;
+  height: 14vh;
+  background-color: #ffffff;
+  color: #000000;
   text-align: center;
   padding: 20px;
   position: relative;
@@ -346,3 +379,15 @@ h2 {
   align-items: center;
   flex-direction: column;
 } */
+@media (max-width: 768px) {
+  .top-three {
+    flex-wrap: wrap;
+    height: auto;
+  }
+
+  #left-side,
+  #right-side {
+    height: 40vh;
+    width: 100%;
+  }
+}
