@@ -84,8 +84,8 @@ h6 {
   justify-content: space-between;
 }
 
-.navbar .logo a {
-  color: #000000;
+.navbar .logo {
+  color: #ffffff;
   font-size: 30px;
   font-weight: 600;
   text-decoration: none;
@@ -109,11 +109,15 @@ h6 {
   transition: all 0.3s ease;
 }
 .icon {
-  color: #fff;
+  color: #ffffff;
   font-size: 20px;
   cursor: pointer;
   display: none;
 }
+.sticky-black {
+  color: #000000 !important;
+}
+
 .menu-list .cancel-btn {
   position: absolute;
   right: 30px;
@@ -376,7 +380,7 @@ h2 {
 }
 
 @media (max-width: 380px) {
-  .navbar .logo a {
+  .navbar .logo {
     font-size: 27px;
   }
   body {
