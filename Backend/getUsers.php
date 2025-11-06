@@ -1,6 +1,6 @@
 <?php
 include("db.php");
-//wrap in try catch for tommorrow
+try{
 $sql = "SELECT full_name, score, time from leaderboard ORDER BY score DESC, time ASC";
 
 $stmt = $conn->prepare($sql);
@@ -13,5 +13,10 @@ while ($row = $result->fetch_assoc()) {
     $data[] = $row;
 }
 
-echo json_encode($data);
+
+echo json_encode(["success"=>true,"data"=>$data]);
+}catch (Exception $e){
+$response["error"] = "error fetching users" . $e;
+}
+
 ?>

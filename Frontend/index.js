@@ -57,3 +57,21 @@ document.addEventListener("DOMContentLoaded", function () {
       .start();
   }
 });
+
+async function getUsers() {
+  try {
+    const url = API_BASE_URL + "getUsers.php";
+    const response = await axios.get(url);
+    const success = response.data.success;
+    const data = response.data.data;
+    // console.log(response.data);
+    if (success) {
+      console.log(data);
+    } else {
+      console.log(response.data.error);
+    }
+  } catch {
+    console.log("Error!");
+  }
+}
+getUsers();
