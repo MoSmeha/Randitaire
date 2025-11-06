@@ -1,7 +1,7 @@
 <?php
 include("db.php");
-
-$sql = "SELECT username, score, time from leaderboard ORDER BY score DESC, time ASC";
+//wrap in try catch for tommorrow
+$sql = "SELECT full_name, score, time from leaderboard ORDER BY score DESC, time ASC";
 
 $stmt = $conn->prepare($sql);
 $stmt->execute();

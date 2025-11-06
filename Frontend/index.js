@@ -1,3 +1,5 @@
+API_BASE_URL = "http://localhost/Randitaire/Backend/";
+
 const body = document.querySelector("body");
 const navbar = document.querySelector(".navbar");
 const menuBtn = document.querySelector(".menu-btn");
@@ -30,26 +32,28 @@ window.onscroll = () => {
 document.addEventListener("DOMContentLoaded", function () {
   var app = document.getElementById("typewriter");
 
-  var typewriter = new Typewriter(app, {
-    loop: true,
-    delay: 100,
-  });
+  if (app) {
+    var typewriter = new Typewriter(app, {
+      loop: true,
+      delay: 100,
+    });
 
-  typewriter
-    .pauseFor(750)
-    .typeString("Every")
-    .pauseFor(750)
-    .deleteChars(5)
-    .typeString("Thing")
-    .pauseFor(750)
-    .deleteChars(5)
-    .typeString("You")
-    .pauseFor(750)
-    .deleteChars(3)
-    .typeString("Desire")
-    .pauseFor(750)
-    .deleteChars(6)
-    .typeString("& More")
-    .pauseFor(750)
-    .start();
+    typewriter
+      .pauseFor(750)
+      .typeString("Every")
+      .pauseFor(750)
+      .deleteChars(5)
+      .typeString("Thing")
+      .pauseFor(750)
+      .deleteChars(5)
+      .typeString("You")
+      .pauseFor(750)
+      .deleteChars(3)
+      .typeString("Desire")
+      .pauseFor(750)
+      .deleteChars(6)
+      .typeString("& More")
+      .pauseFor(750)
+      .start();
+  }
 });
