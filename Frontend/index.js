@@ -67,11 +67,28 @@ async function getUsers() {
     // console.log(response.data);
     if (success) {
       console.log(data);
+      renderLeaderboard(data);
     } else {
       console.log(response.data.error);
     }
   } catch {
-    console.log("Error!");
+    console.log("Error in getting users!");
   }
 }
+
+function renderLeaderboard(users) {
+  const tableBody = document.querySelector("#Leaderboard-page tbody");
+  tableBody.innerHTML = users.map(
+    (user, i) => `
+        <tr>
+          <td>${i + 1}.</td>
+          <td>${user.full_name}</td>
+          <td>${user.score}</td>
+          <td>${user.time}</td>
+        </tr>
+      `
+  );
+  //implemetn no users scenario
+}
+
 getUsers();
