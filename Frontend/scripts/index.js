@@ -1,4 +1,4 @@
-API_BASE_URL = "http://localhost/Randitaire/Backend/";
+API_BASE_URL = "http://localhost/Randitaire/Backend/apis/";
 
 const body = document.querySelector("body");
 const navbar = document.querySelector(".navbar");
