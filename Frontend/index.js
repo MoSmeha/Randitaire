@@ -29,35 +29,6 @@ window.onscroll = () => {
     : icon.classList.remove("sticky-black");
 };
 
-document.addEventListener("DOMContentLoaded", function () {
-  var app = document.getElementById("typewriter");
-
-  if (app) {
-    var typewriter = new Typewriter(app, {
-      loop: true,
-      delay: 100,
-    });
-
-    typewriter
-      .pauseFor(750)
-      .typeString("Every")
-      .pauseFor(750)
-      .deleteChars(5)
-      .typeString("Thing")
-      .pauseFor(750)
-      .deleteChars(5)
-      .typeString("You")
-      .pauseFor(750)
-      .deleteChars(3)
-      .typeString("Desire")
-      .pauseFor(750)
-      .deleteChars(6)
-      .typeString("& More")
-      .pauseFor(750)
-      .start();
-  }
-});
-
 async function getUsers() {
   try {
     const url = API_BASE_URL + "getUsers.php";
@@ -67,28 +38,55 @@ async function getUsers() {
     // console.log(response.data);
     if (success) {
       console.log(data);
-      renderLeaderboard(data);
+      showLeaderboard(data);
+      showTopThree(data.slice(0, 3));
     } else {
       console.log(response.data.error);
     }
-  } catch {
-    console.log("Error in getting users!");
+  } catch (error) {
+    console.log("Error in getting users!", error);
   }
 }
 
-function renderLeaderboard(users) {
+function showLeaderboard(users) {
   const tableBody = document.querySelector("#Leaderboard-page tbody");
-  tableBody.innerHTML = users.map(
-    (user, i) => `
-        <tr>
-          <td>${i + 1}.</td>
-          <td>${user.full_name}</td>
-          <td>${user.score}</td>
-          <td>${user.time}</td>
-        </tr>
-      `
-  );
-  //implemetn no users scenario
+  if (!tableBody) return; //eza kona bi HomePage
+
+  users.forEach((user, i) => {
+    const row = document.createElement("tr");
+    row.innerHTML = `
+      <td>${i + 1}.</td>
+      <td>${user.full_name}</td>
+      <td>${user.score}</td>
+      <td>${user.time}</td>
+    `;
+    tableBody.appendChild(row);
+  });
+}
+
+function showTopThree(users) {
+  const rightSide = document.querySelector("#right-side");
+  if (!rightSide) return; //eza kona be Leaderboard
+
+  const badges = [
+    "./images/gold-removebg-preview.png",
+    "./images/silver-removebg-preview.png",
+    "./images/bronze-removebg-preview.png",
+  ];
+
+  users.forEach((user, index) => {
+    const card = document.createElement("div");
+    card.className = "leaderboard-card";
+    card.innerHTML = `
+      <img src="${badges[index]}" alt="${user.full_name} badge" class="badge" />
+      <div class="info">
+        <h3>${index + 1}. ${user.full_name}</h3>
+        <p>Score: ${user.score}</p>
+        <p>Time: ${user.time}</p>
+      </div>
+    `;
+    rightSide.appendChild(card);
+  });
 }
 
 getUsers();
