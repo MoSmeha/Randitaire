@@ -51,6 +51,7 @@ async function getUsers() {
 function showLeaderboard(users) {
   const tableBody = document.querySelector("#Leaderboard-page tbody");
   if (!tableBody) return; //eza kona bi HomePage
+  tableBody.innerHTML = "";
 
   users.forEach((user, i) => {
     const row = document.createElement("tr");
@@ -67,6 +68,7 @@ function showLeaderboard(users) {
 function showTopThree(users) {
   const rightSide = document.querySelector("#right-side");
   if (!rightSide) return; //eza kona be Leaderboard
+  rightSide.innerHTML = "";
 
   const badges = [
     "./images/gold-removebg-preview.png",
@@ -88,5 +90,44 @@ function showTopThree(users) {
     rightSide.appendChild(card);
   });
 }
+
+async function addUser(full_name) {
+  try {
+    const url = API_BASE_URL + "addUsers.php";
+    const response = await axios.post(url, { full_name });
+    const success = response.data.success;
+    if (success) {
+      console.log("User added");
+      getUsers();
+    } else {
+      console.log("Error adding user:", response.data.error);
+      alert("Error adding user, make sure it contains only letters");
+    }
+  } catch (error) {
+    console.log("Error in adding user!", error);
+    alert("Error adding user, make sure it contains only letters");
+  }
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  const submitBtn = document.querySelector(
+    "#Leaderboard-page .add-name-form button"
+  );
+  const nameInput = document.querySelector(
+    "#Leaderboard-page .add-name-form input[name='name']"
+  );
+  if (submitBtn && nameInput) {
+    submitBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      const name = nameInput.value.trim();
+      if (name) {
+        addUser(name);
+        nameInput.value = "";
+      } else {
+        alert("Please enter a name");
+      }
+    });
+  }
+});
 
 getUsers();

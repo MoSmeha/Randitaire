@@ -1,5 +1,5 @@
 <?php
-include("./db.hp");
+include("./db.php");
 
 
 $data = json_decode(file_get_contents("php://input"), true);
@@ -27,7 +27,7 @@ if (isset($data["full_name"]) && $data["full_name"] != "") {
 $score = rand(50, 365);
 $time= rand(3,15);
 
-$query = $mysql->prepare("INSERT INTO leaderboard(full_name, score, time) VALUES (?, ?, ?)");
+$query = $conn->prepare("INSERT INTO leaderboard(full_name, score, time) VALUES (?, ?, ?)");
 $query->bind_param("sii", $full_name, $score, $time);
 
 if ($query->execute()) {
