@@ -1,5 +1,5 @@
 <?php
-include("db.php");
+include("../db/db.php");
 try{
 $sql = "SELECT full_name, score, time from leaderboard ORDER BY score DESC, time ASC";
 
