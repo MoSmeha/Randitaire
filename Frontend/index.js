@@ -1,3 +1,5 @@
+API_BASE_URL = "http://localhost/Randitaire/Backend/";
+
 const body = document.querySelector("body");
 const navbar = document.querySelector(".navbar");
 const menuBtn = document.querySelector(".menu-btn");
@@ -27,29 +29,64 @@ window.onscroll = () => {
     : icon.classList.remove("sticky-black");
 };
 
-document.addEventListener("DOMContentLoaded", function () {
-  var app = document.getElementById("typewriter");
+async function getUsers() {
+  try {
+    const url = API_BASE_URL + "getUsers.php";
+    const response = await axios.get(url);
+    const success = response.data.success;
+    const data = response.data.data;
+    // console.log(response.data);
+    if (success) {
+      console.log(data);
+      showLeaderboard(data);
+      showTopThree(data.slice(0, 3));
+    } else {
+      console.log(response.data.error);
+    }
+  } catch (error) {
+    console.log("Error in getting users!", error);
+  }
+}
 
-  var typewriter = new Typewriter(app, {
-    loop: true,
-    delay: 100,
+function showLeaderboard(users) {
+  const tableBody = document.querySelector("#Leaderboard-page tbody");
+  if (!tableBody) return; //eza kona bi HomePage
+
+  users.forEach((user, i) => {
+    const row = document.createElement("tr");
+    row.innerHTML = `
+      <td>${i + 1}.</td>
+      <td>${user.full_name}</td>
+      <td>${user.score}</td>
+      <td>${user.time}</td>
+    `;
+    tableBody.appendChild(row);
   });
+}
 
-  typewriter
-    .pauseFor(750)
-    .typeString("Every")
-    .pauseFor(750)
-    .deleteChars(5)
-    .typeString("Thing")
-    .pauseFor(750)
-    .deleteChars(5)
-    .typeString("You")
-    .pauseFor(750)
-    .deleteChars(3)
-    .typeString("Desire")
-    .pauseFor(750)
-    .deleteChars(6)
-    .typeString("& More")
-    .pauseFor(750)
-    .start();
-});
+function showTopThree(users) {
+  const rightSide = document.querySelector("#right-side");
+  if (!rightSide) return; //eza kona be Leaderboard
+
+  const badges = [
+    "./images/gold-removebg-preview.png",
+    "./images/silver-removebg-preview.png",
+    "./images/bronze-removebg-preview.png",
+  ];
+
+  users.forEach((user, index) => {
+    const card = document.createElement("div");
+    card.className = "leaderboard-card";
+    card.innerHTML = `
+      <img src="${badges[index]}" alt="${user.full_name} badge" class="badge" />
+      <div class="info">
+        <h3>${index + 1}. ${user.full_name}</h3>
+        <p>Score: ${user.score}</p>
+        <p>Time: ${user.time}</p>
+      </div>
+    `;
+    rightSide.appendChild(card);
+  });
+}
+
+getUsers();

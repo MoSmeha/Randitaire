@@ -14,6 +14,7 @@
       href="https://fonts.googleapis.com/css2?family=Lobster+Two:ital,wght@0,400;0,700;1,400;1,700&display=swap"
       rel="stylesheet"
     />
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <title>Leaderboard</title>
   </head>
   <body>
@@ -38,33 +39,26 @@
     </nav>
 
     <section id="Leaderboard-page">
-      <form class="add-name-form">
+      <div class="add-name-form">
         <input type="text" name="name" placeholder="Enter name" required />
         <button type="submit">Submit</button>
-      </form>
+      </div>
+
       <div class="table-container">
         <table>
           <thead>
             <tr>
+              <th>rank</th>
               <th>Name</th>
               <th>Score</th>
               <th>Time</th>
             </tr>
           </thead>
-          <tbody>
-            <tr>
-              <td>Karim</td>
-              <td>120</td>
-              <td>02:15</td>
-            </tr>
-            <tr>
-              <td>Ali</td>
-              <td>110</td>
-              <td>02:20</td>
-            </tr>
-          </tbody>
+          <tbody></tbody>
         </table>
       </div>
     </section>
+    <script src="axios.min.js"></script>
+    <script src="index.js"></script>
   </body>
 </html>
